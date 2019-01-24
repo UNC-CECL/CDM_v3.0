@@ -5,8 +5,8 @@
 #include <math.h>
 #include <random>
 #include <iostream>
-#include <Rmath.h>
-#include <R.h>
+//#include <Rmath.h>
+//#include <R.h>
 #include <algorithm>
 #include <chrono>
 
