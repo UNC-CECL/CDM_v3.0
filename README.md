@@ -1,3 +1,5 @@
+![Build/Test CI](https://github.com/mcflugen/CDM_v3.0/workflows/Build/Test%20CI/badge.svg)
+
 # Coastal Dune Model
 
 Coastal Dune Model that includes updated vegetation and wrack dynamics.
@@ -23,15 +25,37 @@ installed.
 
 ### Compile
 
+#### Linux and Mac
+
 To build and install cmake, run
 
     $ mkdir _build && cd _build
-    $ cmake ../src -DCMAKE_INSTALL_PREFIX=<path-to-installation>
+    $ cmake ../src -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX
     $ make -j4
     $ make install
 
-where `<path-to-installation>` is the base directory in which the Coastal Dune
-Model will be installed (`/usr/local` is the default).
+This will install Coastal Dune Model into your current conda environment.
+
+#### Windows
+
+To build the *CDM* on Windows, you will need to install a C++ compiler. The
+following instructions assume *Microsoft Visual Studio 2017 or Microsoft Build
+Tools for Visual Studio 2017*.
+
+After you have activated the conda environment you created in the previous
+section, you need to set up your compiler by running *vcvarsall.bat*. This
+can be done from within the Anaconda Powershell Prompt by running the
+following,
+
+    $ & 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat' x86
+
+You should now be able to run *cmake* and then compile the program in a
+way that is similar to with Linux and Mac,
+
+    $ mkdir _build
+    $ cd _build
+    $ cmake ../src -DCMAKE_INSTALL_PREFIX:PATH=$env:CONDA_PREFIX
+    $ cmake --build . --target install
 
 ## Use
 
