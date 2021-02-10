@@ -3,6 +3,7 @@
  ******************************************************************************/
 
 #include <iostream>
+
 #include <math.h>
 #include "globals.h"
 #include "PTG_Func2dScalar.h"
@@ -147,13 +148,13 @@ double PTG_Func2dScalar::CenterOfMassX() const
     for (int x=0; x < SizeX(); x++) {
         double linesum= 0.0;
         for (int y=0; y < SizeY(); y++)
-            if( finite((*this)(x, y)) )
+            if( isfinite((*this)(x, y)) )
                 linesum += (*this)(x,y);
         xsum += linesum * x;
         sum += linesum;
     }
     centerx= Delta()*xsum/sum;
-    if( finite(centerx) )
+    if( isfinite(centerx) )
         return centerx;
     else
         return Delta()*SizeX()/2.0;

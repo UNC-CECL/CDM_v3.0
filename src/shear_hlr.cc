@@ -178,7 +178,7 @@ double shearHLR::CalcPertTau(TFktScal& h, TFktVec& tau)
             ky2= ky*ky;
             ka= sqrt(kx2+ky2);
             
-        	if( (!finite(fft_h.freqre(x, y)) || !finite(fft_h.freqim(x, y))) && !naninfwarned ) {
+        	if( (!isfinite(fft_h.freqre(x, y)) || !isfinite(fft_h.freqim(x, y))) && !naninfwarned ) {
           		fprintf(stderr, "CShearHLR::CalcPertTau:  NAN or INF in fft_h after FT.\n");
           		naninfwarned= true;
         	}
@@ -226,7 +226,7 @@ double shearHLR::CalcPertTau(TFktScal& h, TFktVec& tau)
     }
     L = Int/(Int_x*m_dkx);
     
-    if( !finite(L) )	L= iNx;
+    if( !isfinite(L) )	L= iNx;
     
     return L;
 }

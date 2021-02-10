@@ -5,7 +5,9 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
+#ifdef WITH_UNISTD
+  #include <unistd.h>
+#endif
 #include <errno.h>
 #include <math.h>
 
@@ -463,11 +465,13 @@ duneglobals::duneglobals( const dunepar& parameters )
         "'.  Data directory doesn't exist or permission denied.  Aborting.\n";
         exit(1);
     }
+#ifdef WITH_UNISTD
     if( !S_ISDIR(savedirstat.st_mode) ) {
         cerr << "duneglobals constructor:  Data directory `" << m_datadir <<
         "' is not a directory.  Aborting.\n";
         exit(1);
     }
+#endif
 }
 
 
