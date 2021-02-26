@@ -1,0 +1,4 @@
+cmake
+cxx-compiler
+fftw
+pkg-config
